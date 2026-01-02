@@ -4,8 +4,24 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+# Configure pytest-asyncio mode
+pytest_plugins = ('pytest_asyncio',)
+
 # Ensure project modules are importable
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+
+# ============================================================================
+# PYTEST ASYNCIO CONFIGURATION
+# ============================================================================
+
+@pytest.fixture(scope="session")
+def event_loop():
+    """Create event loop for async tests"""
+    import asyncio
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
 
 
 # ============================================================================
