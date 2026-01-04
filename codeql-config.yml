@@ -1,23 +1,12 @@
 name: "AstraGuard CodeQL Configuration"
 
-paths:
-  - src
-  - anomaly
-  - api
-  - astraguard
-  - backend
-  - classifier
-  - config
-  - core
-  - memory_engine
-  - state_machine
-  - security_engine
-
 paths-ignore:
   - tests
   - docs
   - examples
   - htmlcov
+  - .github
+  - assets
 
 queries:
   - uses: security-extended
