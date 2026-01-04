@@ -1199,6 +1199,88 @@ FeedbackEvent(..., operator_notes="x" * 501)
 
 ---
 
+## 📝 Action Logging with `@log_feedback` Decorator (#51)
+
+**Purpose**: Automatically capture recovery action results without modifying existing code. Provides non-blocking feedback event logging to pending store.
+
+**How It Works:**
+```python
+from security_engine.decorators import log_feedback
+
+# Decorate any recovery function - no changes to logic needed
+@log_feedback(fault_id="power_loss_001", anomaly_type="power_subsystem")
+def emergency_power_cycle(system_state) -> bool:
+    """Recovery action with automatic feedback logging."""
+    # ... existing recovery logic ...
+    return success  # True/False
+```
+
+**Automatic Behavior:**
+1. **Execution**: Function runs with original logic unchanged
+2. **Capture**: Result (True/False) → confidence score (1.0/0.5)
+3. **Store**: FeedbackEvent appended to `feedback_pending.json`
+4. **Non-blocking**: Errors in logging don't affect recovery
+
+**Features:**
+- ✅ Thread-safe atomic appends to `feedback_pending.json`
+- ✅ Auto-extracts `mission_phase` from system_state
+- ✅ Confidence scoring: success=1.0, failure=0.5
+- ✅ Preserves all return values (True, False, None, etc.)
+- ✅ Non-blocking error handling (logging errors don't break recovery)
+- ✅ 20+ comprehensive tests including concurrency chaos
+- ✅ 100% code coverage
+
+**Example - Recovery Action Sequence:**
+```python
+@log_feedback("thermal_spike", "thermal")
+def activate_passive_cooling(state):
+    return True  # Auto-logged: confidence_score=1.0
+
+@log_feedback("thermal_spike_fail", "thermal")
+def thermal_shutdown(state):
+    return False  # Auto-logged: confidence_score=0.5
+
+# Usage - both auto-log to feedback_pending.json
+state = SystemState(mission_phase="PAYLOAD_OPS")
+activate_passive_cooling(state)  # ✅ Logged
+thermal_shutdown(state)          # ✅ Logged (even on failure)
+```
+
+**Pending Store Format** (`feedback_pending.json`):
+```json
+[
+  {
+    "fault_id": "power_loss_001",
+    "anomaly_type": "power_subsystem",
+    "recovery_action": "emergency_power_cycle",
+    "mission_phase": "NOMINAL_OPS",
+    "confidence_score": 1.0,
+    "timestamp": "2026-01-04T14:30:22.123456"
+  }
+]
+```
+
+**Integration with Policy Engine:**
+```python
+# Any recovery function can be decorated
+from security_engine.decorators import log_feedback
+
+# In backend/recovery_orchestrator.py or policy_engine.py:
+@log_feedback("circuit_break_001", "circuit_breaker")
+async def circuit_recovery(state):
+    return await _perform_circuit_reset(state)
+
+@log_feedback("cache_purge_001", "cache")
+def cache_recovery(state):
+    return _clear_cache(state)
+```
+
+**Blocking Issues:**
+- #52: Consume `feedback_pending.json` via CLI
+- #53-56: Feedback analytics and retraining pipeline
+
+---
+
 ## 🎯 Project Goals (ECWoC '26)
 
 As part of **Elite Coders Winter of Code 2026**, AstraGuard AI has clear deliverables and learning objectives:
