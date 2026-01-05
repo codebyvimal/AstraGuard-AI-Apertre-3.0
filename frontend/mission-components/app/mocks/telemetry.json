@@ -1,0 +1,881 @@
+{
+    "charts": {
+        "cpu": {
+            "label": "CPU Load",
+            "color": "#00f5ff",
+            "data": [
+                {
+                    "timestamp": "12:50",
+                    "value": 45
+                },
+                {
+                    "timestamp": "12:51",
+                    "value": 48
+                },
+                {
+                    "timestamp": "12:52",
+                    "value": 42
+                },
+                {
+                    "timestamp": "12:53",
+                    "value": 55
+                },
+                {
+                    "timestamp": "12:54",
+                    "value": 60
+                },
+                {
+                    "timestamp": "12:55",
+                    "value": 58
+                },
+                {
+                    "timestamp": "12:56",
+                    "value": 52
+                },
+                {
+                    "timestamp": "12:57",
+                    "value": 49
+                },
+                {
+                    "timestamp": "12:58",
+                    "value": 47
+                },
+                {
+                    "timestamp": "12:59",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:00",
+                    "value": 46
+                },
+                {
+                    "timestamp": "13:01",
+                    "value": 48
+                },
+                {
+                    "timestamp": "13:02",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:03",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:04",
+                    "value": 53
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:06",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:07",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:08",
+                    "value": 42
+                },
+                {
+                    "timestamp": "13:09",
+                    "value": 40
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 43
+                },
+                {
+                    "timestamp": "13:11",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:12",
+                    "value": 47
+                },
+                {
+                    "timestamp": "13:13",
+                    "value": 49
+                },
+                {
+                    "timestamp": "13:14",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:16",
+                    "value": 51
+                },
+                {
+                    "timestamp": "13:17",
+                    "value": 48
+                },
+                {
+                    "timestamp": "13:18",
+                    "value": 46
+                },
+                {
+                    "timestamp": "13:19",
+                    "value": 44
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:21",
+                    "value": 47
+                },
+                {
+                    "timestamp": "13:22",
+                    "value": 49
+                },
+                {
+                    "timestamp": "13:23",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:24",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:26",
+                    "value": 58
+                },
+                {
+                    "timestamp": "13:27",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:28",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:29",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 58
+                },
+                {
+                    "timestamp": "13:31",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:32",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:33",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:34",
+                    "value": 48
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 46
+                },
+                {
+                    "timestamp": "13:36",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:37",
+                    "value": 47
+                },
+                {
+                    "timestamp": "13:38",
+                    "value": 49
+                },
+                {
+                    "timestamp": "13:39",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:41",
+                    "value": 53
+                },
+                {
+                    "timestamp": "13:42",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:43",
+                    "value": 57
+                },
+                {
+                    "timestamp": "13:44",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 52
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 50
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 48
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 47
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 45
+                }
+            ]
+        },
+        "memory": {
+            "label": "Memory Usage",
+            "color": "#ff00ff",
+            "data": [
+                {
+                    "timestamp": "12:50",
+                    "value": 60
+                },
+                {
+                    "timestamp": "12:51",
+                    "value": 61
+                },
+                {
+                    "timestamp": "12:52",
+                    "value": 62
+                },
+                {
+                    "timestamp": "12:53",
+                    "value": 62
+                },
+                {
+                    "timestamp": "12:54",
+                    "value": 63
+                },
+                {
+                    "timestamp": "12:55",
+                    "value": 63
+                },
+                {
+                    "timestamp": "12:56",
+                    "value": 64
+                },
+                {
+                    "timestamp": "12:57",
+                    "value": 64
+                },
+                {
+                    "timestamp": "12:58",
+                    "value": 65
+                },
+                {
+                    "timestamp": "12:59",
+                    "value": 65
+                },
+                {
+                    "timestamp": "13:00",
+                    "value": 64
+                },
+                {
+                    "timestamp": "13:01",
+                    "value": 63
+                },
+                {
+                    "timestamp": "13:02",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:03",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:04",
+                    "value": 58
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 57
+                },
+                {
+                    "timestamp": "13:06",
+                    "value": 56
+                },
+                {
+                    "timestamp": "13:07",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:08",
+                    "value": 55
+                },
+                {
+                    "timestamp": "13:09",
+                    "value": 56
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 57
+                },
+                {
+                    "timestamp": "13:11",
+                    "value": 58
+                },
+                {
+                    "timestamp": "13:12",
+                    "value": 59
+                },
+                {
+                    "timestamp": "13:13",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:14",
+                    "value": 61
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:16",
+                    "value": 63
+                },
+                {
+                    "timestamp": "13:17",
+                    "value": 64
+                },
+                {
+                    "timestamp": "13:18",
+                    "value": 65
+                },
+                {
+                    "timestamp": "13:19",
+                    "value": 66
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 67
+                },
+                {
+                    "timestamp": "13:21",
+                    "value": 66
+                },
+                {
+                    "timestamp": "13:22",
+                    "value": 65
+                },
+                {
+                    "timestamp": "13:23",
+                    "value": 64
+                },
+                {
+                    "timestamp": "13:24",
+                    "value": 63
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:26",
+                    "value": 61
+                },
+                {
+                    "timestamp": "13:27",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:28",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:29",
+                    "value": 61
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:31",
+                    "value": 63
+                },
+                {
+                    "timestamp": "13:32",
+                    "value": 64
+                },
+                {
+                    "timestamp": "13:33",
+                    "value": 65
+                },
+                {
+                    "timestamp": "13:34",
+                    "value": 66
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 67
+                },
+                {
+                    "timestamp": "13:36",
+                    "value": 68
+                },
+                {
+                    "timestamp": "13:37",
+                    "value": 69
+                },
+                {
+                    "timestamp": "13:38",
+                    "value": 70
+                },
+                {
+                    "timestamp": "13:39",
+                    "value": 69
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 68
+                },
+                {
+                    "timestamp": "13:41",
+                    "value": 67
+                },
+                {
+                    "timestamp": "13:42",
+                    "value": 66
+                },
+                {
+                    "timestamp": "13:43",
+                    "value": 65
+                },
+                {
+                    "timestamp": "13:44",
+                    "value": 64
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 63
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 62
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 61
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 60
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 60
+                }
+            ]
+        },
+        "io": {
+            "label": "Network I/O",
+            "color": "#10b981",
+            "data": [
+                {
+                    "timestamp": "13:00",
+                    "value": 120
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 150
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 180
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 130
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 140
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 160
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 200
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 190
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 170
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 150
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 140
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 130
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 120
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 110
+                }
+            ]
+        },
+        "latency": {
+            "label": "P95 Latency",
+            "color": "#f59e0b",
+            "data": [
+                {
+                    "timestamp": "13:00",
+                    "value": 140
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 145
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 142
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 150
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 148
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 155
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 160
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 158
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 152
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 148
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 146
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 144
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 142
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 140
+                }
+            ]
+        },
+        "errors": {
+            "label": "Error Rate",
+            "color": "#ef4444",
+            "data": [
+                {
+                    "timestamp": "13:00",
+                    "value": 0.1
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 0.2
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 0.3
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 0.25
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 0.2
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 0.15
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 0.1
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 0.2
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 0.3
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 0.4
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 0.35
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 0.3
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 0.25
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 0.2
+                }
+            ]
+        },
+        "bus": {
+            "label": "Bus Utilization",
+            "color": "#8b5cf6",
+            "data": [
+                {
+                    "timestamp": "13:00",
+                    "value": 30
+                },
+                {
+                    "timestamp": "13:05",
+                    "value": 40
+                },
+                {
+                    "timestamp": "13:10",
+                    "value": 35
+                },
+                {
+                    "timestamp": "13:15",
+                    "value": 38
+                },
+                {
+                    "timestamp": "13:20",
+                    "value": 42
+                },
+                {
+                    "timestamp": "13:25",
+                    "value": 45
+                },
+                {
+                    "timestamp": "13:30",
+                    "value": 40
+                },
+                {
+                    "timestamp": "13:35",
+                    "value": 35
+                },
+                {
+                    "timestamp": "13:40",
+                    "value": 30
+                },
+                {
+                    "timestamp": "13:45",
+                    "value": 32
+                },
+                {
+                    "timestamp": "13:46",
+                    "value": 34
+                },
+                {
+                    "timestamp": "13:47",
+                    "value": 36
+                },
+                {
+                    "timestamp": "13:48",
+                    "value": 38
+                },
+                {
+                    "timestamp": "13:49",
+                    "value": 40
+                }
+            ]
+        }
+    },
+    "health": [
+        {
+            "id": "db-primary",
+            "name": "PostgreSQL Primary",
+            "status": "healthy",
+            "lastCheck": "13:49:32 IST",
+            "uptime": "47d 2h",
+            "logs": [
+                "INFO: Connection pool healthy",
+                "INFO: Checkpoint complete",
+                "INFO: VACUUM finished"
+            ]
+        },
+        {
+            "id": "telemetry-02",
+            "name": "Telemetry Node 02",
+            "status": "warning",
+            "lastCheck": "13:49:28 IST",
+            "uptime": "2h 15m",
+            "logs": [
+                "WARN: High latency detected",
+                "WARN: Dropped 5 packets",
+                "INFO: Retrying connection"
+            ]
+        },
+        {
+            "id": "ingest-01",
+            "name": "Ingestion Service",
+            "status": "healthy",
+            "lastCheck": "13:49:35 IST",
+            "uptime": "12d 5h",
+            "logs": [
+                "INFO: Batch processed",
+                "INFO: Throughput stable"
+            ]
+        },
+        {
+            "id": "cache-redis",
+            "name": "Redis Cache",
+            "status": "healthy",
+            "lastCheck": "13:49:33 IST",
+            "uptime": "47d 2h",
+            "logs": [
+                "INFO: Memory fragmentation ok",
+                "INFO: RDB saved"
+            ]
+        },
+        {
+            "id": "api-gateway",
+            "name": "API Gateway",
+            "status": "warning",
+            "lastCheck": "13:49:40 IST",
+            "uptime": "5d 1h",
+            "logs": [
+                "WARN: P99 latency spike",
+                "INFO: Rate limiting active"
+            ]
+        },
+        {
+            "id": "worker-pool",
+            "name": "Worker Pool",
+            "status": "healthy",
+            "lastCheck": "13:49:30 IST",
+            "uptime": "1d 4h",
+            "logs": [
+                "INFO: Jobs processed: 5000",
+                "INFO: Queue empty"
+            ]
+        },
+        {
+            "id": "search-idx",
+            "name": "Search Index",
+            "status": "healthy",
+            "lastCheck": "13:49:15 IST",
+            "uptime": "30d 10h",
+            "logs": [
+                "INFO: Index optimized",
+                "INFO: Delta merge complete"
+            ]
+        },
+        {
+            "id": "auth-svc",
+            "name": "Auth Service",
+            "status": "healthy",
+            "lastCheck": "13:49:45 IST",
+            "uptime": "15d 3h",
+            "logs": [
+                "INFO: Tokens refreshed",
+                "INFO: No anomalies"
+            ]
+        },
+        {
+            "id": "logs-agg",
+            "name": "Log Aggregator",
+            "status": "critical",
+            "lastCheck": "13:48:00 IST",
+            "uptime": "5m",
+            "logs": [
+                "ERR: Disk full",
+                "ERR: Write failed",
+                "CRIT: Service stopping"
+            ]
+        },
+        {
+            "id": "notify-svc",
+            "name": "Notification Svc",
+            "status": "healthy",
+            "lastCheck": "13:49:38 IST",
+            "uptime": "40d 1h",
+            "logs": [
+                "INFO: Emails sent: 120",
+                "INFO: SMS gateway connected"
+            ]
+        },
+        {
+            "id": "cdn-edge",
+            "name": "CDN Edge",
+            "status": "healthy",
+            "lastCheck": "13:49:50 IST",
+            "uptime": "100d 5h",
+            "logs": [
+                "INFO: Cache hit ratio 98%",
+                "INFO: Bandwidth optimal"
+            ]
+        },
+        {
+            "id": "ml-model",
+            "name": "Anomaly Model",
+            "status": "warning",
+            "lastCheck": "13:49:10 IST",
+            "uptime": "1d 1h",
+            "logs": [
+                "WARN: Drift detected",
+                "INFO: Retraining scheduled"
+            ]
+        }
+    ]
+}
