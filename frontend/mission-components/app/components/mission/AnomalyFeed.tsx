@@ -9,6 +9,8 @@ interface Props {
 }
 
 export const AnomalyFeed: React.FC<Props> = ({ anomalies, onAcknowledge, onSelect, selectedSat }) => {
+  // TODO: Add error handling for anomaly processing and acknowledgment failures
+  // TODO: Implement caching mechanism for anomaly data to reduce API calls
   const severityConfig = {
     Critical: { icon: 'Alert', borderColor: 'border-red-500/50', bgColor: 'bg-red-500/10', textColor: 'text-red-400' },
     Warning: { icon: 'Warning', borderColor: 'border-yellow-500/50', bgColor: 'bg-yellow-500/10', textColor: 'text-yellow-400' },

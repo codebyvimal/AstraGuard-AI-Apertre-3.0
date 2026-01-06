@@ -129,28 +129,36 @@ class StateMachine:
                     context={"phase_type": str(type(phase))},
                 )
 
-            if self.current_phase == phase:
+            # Validate phase using MissionPhaseValidator
+            try:
+                validated_phase_str = MissionPhaseValidator.validate_phase(phase.value)
+                validated_phase = MissionPhase(validated_phase_str)
+            except ValidationError as e:
+                raise StateTransitionError(
+                    f"Phase validation failed: {e}",
+                    component="state_machine",
+                    context={"validation_error": str(e)},
+                )
+
+            if self.current_phase == validated_phase:
                 health_monitor.mark_healthy("state_machine")
                 return {
                     "success": True,
                     "previous_phase": self.current_phase.value,
-                    "new_phase": phase.value,
+                    "new_phase": validated_phase.value,
                     "message": "Already in target phase",
                 }
 
-            # Check if transition is valid
-            if phase not in self.PHASE_TRANSITIONS.get(self.current_phase, []):
+            # Check if transition is valid using MissionPhaseValidator
+            try:
+                MissionPhaseValidator.validate_transition(
+                    self.current_phase.value, validated_phase.value
+                )
+            except ValidationError as e:
                 raise StateTransitionError(
-                    f"Invalid phase transition: {self.current_phase.value} → {phase.value}",
+                    f"Invalid phase transition: {e}",
                     component="state_machine",
-                    context={
-                        "current_phase": self.current_phase.value,
-                        "target_phase": phase.value,
-                        "valid_transitions": [
-                            p.value
-                            for p in self.PHASE_TRANSITIONS.get(self.current_phase, [])
-                        ],
-                    },
+                    context={"validation_error": str(e)},
                 )
 
             self.current_phase = phase
@@ -226,6 +234,13 @@ class StateMachine:
         self, fault_type: str, telemetry: Dict[str, Any]
     ) -> Dict[str, str]:
         """Process a detected fault and transition state."""
+        # Validate telemetry data
+        try:
+            TelemetryData.validate(telemetry)
+        except ValidationError as e:
+            logger.warning(f"Telemetry validation failed in process_fault: {e}")
+            # Continue processing but log the issue
+
         previous_state = self.current_state.value
 
         if fault_type == "normal":

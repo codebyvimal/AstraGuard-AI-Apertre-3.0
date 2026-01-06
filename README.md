@@ -29,7 +29,7 @@
 
   ---
 
-  **Bridging the gap between theoretical security concepts and real-world workflows**
+ ### **Bridging the gap between theoretical security concepts and real-world workflows**
 
 </div>
 
@@ -37,7 +37,7 @@
 
 ## 🏆 Our Amazing Contributors
 
-A huge thank you to all the talented developers who have contributed to OpenPlayground! 
+A huge thank you to all the talented developers who have contributed to AstraGuard AI
 
 <div >
 
@@ -50,8 +50,7 @@ A huge thank you to all the talented developers who have contributed to OpenPlay
 
 # _Want to see your avatar here? [Make your first contribution today!](CONTRIBUTING.md)_
 
-<!--line-->
-<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 
 
 

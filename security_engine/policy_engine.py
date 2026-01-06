@@ -4,6 +4,7 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
 from models.feedback import FeedbackEvent, FeedbackLabel
+from core.input_validation import PolicyDecision, ValidationError
 
 
 class FeedbackPolicyUpdater:
