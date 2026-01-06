@@ -12,6 +12,7 @@ import { DashboardProvider, useDashboard } from '../context/DashboardContext';
 import { LoadingSkeleton } from '../components/ui/LoadingSkeleton';
 import { TransitionWrapper } from '../components/ui/TransitionWrapper';
 import { MobileNavHamburger } from '../components/ui/MobileNavHamburger';
+import { DesktopTabNav } from '../components/dashboard/DesktopTabNav';
 
 const DashboardContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'mission' | 'systems'>('mission');
@@ -26,33 +27,10 @@ const DashboardContent: React.FC = () => {
         <nav className="sticky top-[100px] lg:top-[80px] z-20 bg-black/80 backdrop-blur-xl border-b border-teal-500/30 px-6 flex flex-col md:flex-row md:items-center justify-between flex-shrink-0 mb-4" role="tablist">
 
           {/* Mobile: Vertical Stack (only visible on mobile) */}
-          {/* Mobile: Vertical Stack (only visible on mobile) */}
           <MobileNavHamburger activeTab={activeTab} onTabChange={setActiveTab} />
 
           {/* Desktop: Horizontal (hidden on mobile) */}
-          <div className="hidden md:flex gap-2 pt-4">
-            <button
-              id="mission-tab"
-              className={`px-6 py-3 rounded-t-lg font-mono text-lg font-semibold transition-all duration-300 ${activeTab === 'mission'
-                ? 'bg-teal-500/10 border-b-2 border-teal-400 text-teal-300 glow-teal'
-                : 'text-gray-400 hover:text-teal-300 hover:bg-teal-500/5'
-                }`}
-              onClick={() => setActiveTab('mission')}
-            >
-              Mission
-            </button>
-
-            <button
-              id="systems-tab"
-              className={`ml-2 px-6 py-3 rounded-t-lg font-mono text-lg font-semibold transition-all duration-300 ${activeTab === 'systems'
-                ? 'bg-cyan-500/10 border-b-2 border-cyan-400 text-cyan-300 glow-cyan'
-                : 'text-gray-400 hover:text-cyan-300 hover:bg-cyan-500/5'
-                }`}
-              onClick={() => setActiveTab('systems')}
-            >
-              Systems
-            </button>
-          </div>
+          <DesktopTabNav activeTab={activeTab} onTabChange={setActiveTab} />
         </nav>
 
         <main className="flex-1 px-6 pb-8 relative">

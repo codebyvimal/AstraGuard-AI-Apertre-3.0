@@ -18,7 +18,13 @@ body {
   --font-geist-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+
+  /* Glow Variables */
   --glow-teal: 0 0 8px #00f5ff, 0 0 16px #00f5ff, 0 0 24px #00f5ff;
+  --glow-cyan: 0 0 8px #06b6d4, 0 0 16px #06b6d4, 0 0 24px #06b6d4;
+  --glow-magenta: 0 0 8px #d946ef, 0 0 16px #d946ef, 0 0 24px #d946ef;
+  --glow-amber: 0 0 8px #fbbf24, 0 0 16px #fbbf24, 0 0 24px #fbbf24;
+  --glow-red: 0 0 8px #ef4444, 0 0 16px #ef4444, 0 0 24px #ef4444;
 }
 
 .dashboard-container {
@@ -32,51 +38,9 @@ body {
   background-attachment: fixed;
 }
 
-.glow-teal { box-shadow: var(--glow-teal); }
-.glow-cyan { box-shadow: 0 0 8px #00f5ff, 0 0 16px #00f5ff, 0 0 24px #00f5ff; }
-.glow-amber { box-shadow: 0 0 8px #fbbf24, 0 0 16px #fbbf24, 0 0 24px #fbbf24; }
-.glow-red { box-shadow: 0 0 8px #ef4444, 0 0 16px #ef4444, 0 0 24px #ef4444; }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-  }
-}
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-    text-shadow: var(--glow-cyan);
-  }
-  50% {
-    opacity: 0.95;
-    text-shadow: none;
-  }
-}
-
-@keyframes flicker-magenta {
-  0%,
-  100% {
-    opacity: 1;
-    text-shadow: var(--glow-magenta);
-  }
-  50% {
-    opacity: 0.95;
-    text-shadow: none;
-  }
+/* Utilities using vars */
+.glow-teal {
+  box-shadow: var(--glow-teal);
 }
 
 .glow-cyan {
@@ -88,11 +52,79 @@ body {
 }
 
 .glow-amber {
-  box-shadow: 0 0 8px #fbbf24, 0 0 16px #fbbf24, 0 0 24px #fbbf24;
+  box-shadow: var(--glow-amber);
 }
 
 .glow-red {
-  box-shadow: 0 0 8px #ef4444, 0 0 16px #ef4444, 0 0 24px #ef4444;
+  box-shadow: var(--glow-red);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: var(--glow-cyan);
+  }
+
+  50% {
+    opacity: 0.95;
+    text-shadow: none;
+  }
+}
+
+@keyframes flicker-teal {
+
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: var(--glow-teal);
+  }
+
+  50% {
+    opacity: 0.95;
+    text-shadow: none;
+  }
+}
+
+@keyframes flicker-magenta {
+
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: var(--glow-magenta);
+  }
+
+  50% {
+    opacity: 0.95;
+    text-shadow: none;
+  }
+}
+
+.tab-active-teal {
+  animation: flicker-teal 2s infinite;
 }
 
 .tab-active-cyan {
@@ -104,24 +136,54 @@ body {
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes lift-burst {
-  0% { transform: scale(1) translateY(0); box-shadow: var(--glow-teal); }
-  50% { transform: scale(1.08) translateY(-4px); box-shadow: 0 20px 40px rgba(0,245,255,0.6); }
-  100% { transform: scale(1.05) translateY(-2px); box-shadow: var(--glow-teal); }
+  0% {
+    transform: scale(1) translateY(0);
+    box-shadow: var(--glow-teal);
+  }
+
+  50% {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.6);
+  }
+
+  100% {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: var(--glow-teal);
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
 /* Sticky hierarchy */
-.sticky-hero { position: sticky; top: 0; z-index: 30; }
-.motion-safe\:transition-none { transition: none !important; }
+.sticky-hero {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.motion-safe\:transition-none {
+  transition: none !important;
+}
 
 /* Animation Utilities */
 .animate-shimmer {

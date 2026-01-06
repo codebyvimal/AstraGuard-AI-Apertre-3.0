@@ -37,25 +37,27 @@ export const MobileNavHamburger: React.FC<Props> = ({ activeTab, onTabChange }) 
       `}>
                 <div className="flex flex-col space-y-2">
                     <button
+                        data-mobile-tab="mission"
                         onClick={() => {
                             onTabChange('mission');
                             setIsOpen(false);
                         }}
                         className={`w-full text-left px-4 py-3 rounded-xl border flex items-center gap-3 transition-all font-mono font-bold ${activeTab === 'mission'
-                                ? 'bg-teal-500/10 border-teal-500/50 text-teal-300 shadow-[0_0_20px_rgba(20,184,166,0.2)]'
-                                : 'bg-black/40 border-white/10 text-gray-400'
+                            ? 'bg-teal-500/10 border-teal-500/50 text-teal-300 shadow-[0_0_20px_rgba(20,184,166,0.2)]'
+                            : 'bg-black/40 border-white/10 text-gray-400'
                             }`}
                     >
                         🛰️ Mission
                     </button>
                     <button
+                        data-mobile-tab="systems"
                         onClick={() => {
                             onTabChange('systems');
                             setIsOpen(false);
                         }}
                         className={`w-full text-left px-4 py-3 rounded-xl border flex items-center gap-3 transition-all font-mono font-bold ${activeTab === 'systems'
-                                ? 'bg-fuchsia-500/10 border-fuchsia-500/50 text-fuchsia-300 shadow-[0_0_20px_rgba(217,70,239,0.2)]'
-                                : 'bg-black/40 border-white/10 text-gray-400'
+                            ? 'bg-fuchsia-500/10 border-fuchsia-500/50 text-fuchsia-300 shadow-[0_0_20px_rgba(217,70,239,0.2)]'
+                            : 'bg-black/40 border-white/10 text-gray-400'
                             }`}
                     >
                         ⚙️ Systems
