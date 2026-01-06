@@ -14,6 +14,8 @@ interface ContextValue {
 const DashboardContext = createContext<ContextValue | undefined>(undefined);
 
 export const DashboardProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    // TODO: Add error boundary for context provider failures
+    // TODO: Implement state persistence caching for dashboard data
     const ws = useDashboardWebSocket();
 
     return (

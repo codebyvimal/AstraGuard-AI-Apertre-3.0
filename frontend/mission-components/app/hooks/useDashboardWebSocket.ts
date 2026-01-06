@@ -82,6 +82,10 @@ export const telemetryReducer = (state: TelemetryState, action: any): TelemetryS
 };
 
 export const useDashboardWebSocket = () => {
+    // TODO: Add error boundary for WebSocket connection failures
+    // TODO: Implement caching mechanism for offline data persistence
+    // TODO: Add connection pooling for multiple WebSocket connections
+    // TODO: Optimize performance with message batching and throttling
     const [state, dispatch] = useReducer(telemetryReducer, initialState);
     const [isConnected, setConnected] = useState(false);
     const wsRef = useRef<WebSocket | null>(null);

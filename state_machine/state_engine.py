@@ -240,6 +240,13 @@ class StateMachine:
         self, fault_type: str, telemetry: Dict[str, Any]
     ) -> Dict[str, str]:
         """Process a detected fault and transition state."""
+        # Validate telemetry data
+        try:
+            TelemetryData.validate(telemetry)
+        except ValidationError as e:
+            logger.warning(f"Telemetry validation failed in process_fault: {e}")
+            # Continue processing but log the issue
+
         previous_state = self.current_state.value
 
         if fault_type == "normal":
