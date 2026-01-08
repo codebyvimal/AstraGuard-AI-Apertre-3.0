@@ -7,7 +7,7 @@ interface CommandResponse {
     timestamp: string;
 }
 
-import { useSoundEffects } from '../../hooks/useSoundEffects';
+import { useVoiceAssistant } from '../../hooks/useVoiceAssistant';
 
 export const CommandTerminal: React.FC = () => {
     const { playKeystroke, playSuccess } = useSoundEffects();
@@ -16,6 +16,22 @@ export const CommandTerminal: React.FC = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const { isListening, toggleListening, registerCommand, speak } = useVoiceAssistant({
+        onCommand: (text) => {
+            setInput(text);
+            // Optionally auto-execute:
+            // executeCommand(text);
+        }
+    });
+
+    // Register Voice Commands on mount
+    useEffect(() => {
+        registerCommand("status", () => executeCommand("UPLINK --target SAT-ALPHA --cmd STATUS"), "Requesting status report.");
+        registerCommand("scan", () => executeCommand("UPLINK --target PROBE-1 --cmd DIAGNOSTICS"), "Initiating system scan.");
+        registerCommand("clear", () => setHistory(['> CONSOLE CLEARED']), "Terminal cleared.");
+        registerCommand("help", () => executeCommand("HELP"), "Displaying available commands.");
+    }, [registerCommand]);
 
     // Focus handling
     useEffect(() => {
@@ -46,6 +62,7 @@ export const CommandTerminal: React.FC = () => {
         // Client-side execution
         if (command === 'CLEAR') {
             setHistory(['> CONSOLE CLEARED']);
+            speak("Terminal cleared.");
             return;
         }
         if (command === 'HELP') {
@@ -56,6 +73,7 @@ export const CommandTerminal: React.FC = () => {
             addToHistory('  EXAMPLES:');
             addToHistory('    uplink --target SAT-ALPHA --cmd REBOOT');
             addToHistory('    uplink --target PROBE-1 --cmd DIAGNOSTICS');
+            speak("Here are the available commands.");
             return;
         }
 
@@ -66,6 +84,7 @@ export const CommandTerminal: React.FC = () => {
 
             if (targetIdx === -1 || cmdArgIdx === -1 || targetIdx + 1 >= cmdParts.length || cmdArgIdx + 1 >= cmdParts.length) {
                 addToHistory("ERROR: Invalid syntax. Usage: uplink --target <ID> --cmd <ACTION>");
+                speak("Invalid syntax.");
                 return;
             }
 
@@ -74,6 +93,7 @@ export const CommandTerminal: React.FC = () => {
 
             setIsProcessing(true);
             addToHistory(`> ENCRYPTING PACKET FOR ${target}...`);
+            speak(`Transmitting ${action} command to ${target}.`);
 
             try {
                 const res = await fetch('http://localhost:8002/api/v1/uplink', {
@@ -89,8 +109,10 @@ export const CommandTerminal: React.FC = () => {
                 addToHistory(`[${data.timestamp}] ACK:${data.ack_id} STATUS:${data.status.toUpperCase()}`);
                 addToHistory(`> ${data.message}`);
                 playSuccess();
+                speak("Command executed successfully.");
             } catch (err) {
                 addToHistory(`ERROR: Uplink failed - ${err}`);
+                speak("Uplink failed.");
             } finally {
                 setIsProcessing(false);
             }
@@ -116,7 +138,10 @@ export const CommandTerminal: React.FC = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-4 pb-2 border-b border-green-900/50 text-green-700">
                 <span>SECURE UPLINK TERMINAL v4.2.0</span>
-                <span className="animate-pulse">● CONNECTED</span>
+                <div className="flex items-center gap-4">
+                    {isListening && <span className="text-red-500 animate-pulse font-bold tracking-widest">● LISTENING</span>}
+                    {!isListening && <span className="animate-pulse">● CONNECTED</span>}
+                </div>
             </div>
 
             {/* Terminal Output */}
@@ -140,9 +165,16 @@ export const CommandTerminal: React.FC = () => {
                     onKeyDown={handleKeyDown}
                     className="flex-1 bg-transparent border-none outline-none text-green-400 placeholder-green-900/50 font-bold caret-green-500"
                     autoFocus
-                    placeholder="Enter command..."
+                    placeholder={isListening ? "Listening..." : "Enter command..."}
                     spellCheck={false}
                 />
+                <button
+                    onClick={toggleListening}
+                    className={`p-2 rounded-full transition-all ${isListening ? 'bg-red-900/50 text-red-500 animate-pulse' : 'text-green-700 hover:text-green-400'}`}
+                    title="Toggle Voice Command"
+                >
+                    {isListening ? '🎤' : '🎙️'}
+                </button>
             </div>
         </div>
     );
