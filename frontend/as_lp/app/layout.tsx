@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Playfair_Display, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { RateLimitNotification } from "../components/rate-limit-notification"
+import { Toaster } from "sonner"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -51,6 +52,7 @@ export default function RootLayout({
         <div className="noise-overlay" />
         {children}
         <RateLimitNotification />
+        <Toaster />
         <Analytics />
       </body>
     </html>
