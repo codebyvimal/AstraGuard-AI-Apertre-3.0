@@ -30,6 +30,7 @@ from astraguard.swarm.compressor import StateCompressor, CompressionStats
 from astraguard.swarm.registry import SwarmRegistry, PeerState
 from astraguard.swarm.health_broadcaster import HealthBroadcaster, BroadcastMetrics
 from astraguard.swarm.intent_broadcaster import IntentBroadcaster, IntentStats
+from astraguard.swarm.reliable_delivery import ReliableDelivery, SentMsg, DeliveryStats, AckStatus
 
 __all__ = [
     # Models (Issue #397)
@@ -63,4 +64,9 @@ __all__ = [
     # Intent Broadcasting (Issue #402)
     "IntentBroadcaster",
     "IntentStats",
+    # Reliable Delivery (Issue #403)
+    "ReliableDelivery",
+    "SentMsg",
+    "DeliveryStats",
+    "AckStatus",
 ]
