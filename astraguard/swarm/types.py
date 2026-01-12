@@ -224,6 +224,16 @@ class SubscriptionID:
             return False
         return self.id == other.id
 
+class ActionScope(str, Enum):
+    """Scope of policy action.
+    
+    LOCAL: Only affects this satellite
+    SWARM: Affects constellation (requires global consensus)
+    """
+    LOCAL = "LOCAL"
+    SWARM = "SWARM"
+
+
 class PriorityEnum(int, Enum):
     """Priority levels for intent messages.
     
@@ -282,3 +292,73 @@ class IntentMessage:
             "sequence": self.sequence,
             "timestamp": self.timestamp.isoformat(),
         }
+
+
+@dataclass
+class Policy:
+    """Policy for local or global swarm action.
+    
+    Issue #407: Local vs global policy arbitration
+    - Represents a proposed action (safe_mode, attitude_adjust, role_reassign)
+    - Can originate locally (device agent) or globally (consensus engine)
+    - Weighted scoring enables intelligent conflict resolution
+    
+    Attributes:
+        action: Action name (e.g., "safe_mode", "attitude_adjust", "role_reassign")
+        parameters: Action parameters as dict
+        priority: Priority level (SAFETY > PERFORMANCE > AVAILABILITY)
+        scope: LOCAL (satellite-only) or SWARM (constellation-wide)
+        score: Confidence score 0.0-1.0 (higher = more important)
+        agent_id: Originating agent ID
+        timestamp: When policy was created
+    """
+    action: str
+    parameters: dict[str, Any]
+    priority: PriorityEnum
+    scope: ActionScope
+    score: float
+    agent_id: AgentID
+    timestamp: datetime = field(default_factory=datetime.utcnow)
+
+    def __post_init__(self):
+        """Validate policy fields."""
+        if not self.action:
+            raise ValueError("action must not be empty")
+        if not isinstance(self.priority, PriorityEnum):
+            raise ValueError("priority must be PriorityEnum instance")
+        if not isinstance(self.scope, ActionScope):
+            raise ValueError("scope must be ActionScope instance")
+        if not (0.0 <= self.score <= 1.0):
+            raise ValueError("score must be 0.0-1.0")
+
+    def to_dict(self) -> dict:
+        """Convert to dict for serialization."""
+        return {
+            "action": self.action,
+            "parameters": self.parameters,
+            "priority": self.priority.value,
+            "scope": self.scope.value,
+            "score": self.score,
+            "agent_id": self.agent_id.to_dict(),
+            "timestamp": self.timestamp.isoformat(),
+        }
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> "Policy":
+        """Deserialize from dictionary."""
+        agent_data = data["agent_id"]
+        agent_id = AgentID(
+            constellation=agent_data["constellation"],
+            satellite_serial=agent_data["satellite_serial"],
+            uuid=UUID(agent_data["uuid"]),
+        )
+        
+        return cls(
+            action=data["action"],
+            parameters=data["parameters"],
+            priority=PriorityEnum(data["priority"]),
+            scope=ActionScope(data["scope"]),
+            score=data["score"],
+            agent_id=agent_id,
+            timestamp=datetime.fromisoformat(data["timestamp"]),
+        )
