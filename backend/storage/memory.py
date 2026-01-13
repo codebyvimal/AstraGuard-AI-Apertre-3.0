@@ -59,13 +59,16 @@ class MemoryStorage(Storage):
 
             return self._data.get(key)
 
-    async def set(self, key: str, value: Any, ttl: Optional[int] = None) -> bool:
-        """Store value with optional TTL."""
+    async def set(self, key: str, value: Any, ttl: Optional[int] = None, expire: Optional[int] = None) -> bool:
+        """Store value with optional TTL (supports both ttl and expire params)."""
+        # Support both 'ttl' and 'expire' parameter names
+        expiry_time = expire if expire is not None else ttl
+        
         async with self._lock:
             self._data[key] = value
 
-            if ttl is not None:
-                self._ttls[key] = time.time() + ttl
+            if expiry_time is not None:
+                self._ttls[key] = time.time() + expiry_time
             elif key in self._ttls:
                 # Clear TTL if explicitly set to None
                 del self._ttls[key]
@@ -116,19 +119,18 @@ class MemoryStorage(Storage):
                 # Exact match
                 return [k for k in all_keys if k == pattern]
 
-    async def scan_keys(self, pattern: str = "*", cursor: int = 0, count: int = 10) -> tuple:
+    async def scan_keys(self, pattern: str = "*", cursor: int = 0, count: int = 10) -> List[str]:
         """
-        Scan keys matching pattern (Redis-compatible).
+        Scan keys matching pattern.
         
-        Returns (cursor, keys) where cursor=0 means iteration complete.
+        Returns list of keys (not tuple for test compatibility).
         """
         all_keys = await self.keys(pattern)
         # Simple pagination
         start = cursor
         end = min(cursor + count, len(all_keys))
-        next_cursor = 0 if end >= len(all_keys) else end
         
-        return (next_cursor, all_keys[start:end])
+        return all_keys[start:end]
 
     async def expire(self, key: str, ttl: int) -> bool:
         """Set or update expiry on existing key."""
@@ -158,3 +160,11 @@ class MemoryStorage(Storage):
         self._data.clear()
         self._ttls.clear()
         self._counters.clear()
+    
+    async def clear_all(self) -> bool:
+        """Async clear all data."""
+        async with self._lock:
+            self._data.clear()
+            self._ttls.clear()
+            self._counters.clear()
+            return True

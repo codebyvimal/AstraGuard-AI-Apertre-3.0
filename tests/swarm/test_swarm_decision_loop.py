@@ -351,7 +351,7 @@ class TestLeaderFollowerDecisions:
     async def test_decision_consistency_between_agents(self, mock_registry, mock_election, mock_memory):
         """Test decision consistency between leader and followers."""
         peer_ids = [
-            AgentID(constellation_id="test", satellite_serial=f"sat-{i:03d}")
+            AgentID(constellation="astra-v3.0", satellite_serial=f"sat-{i:03d}", uuid=uuid5(NAMESPACE_DNS, f"astra-v3.0:sat-{i:03d}"))
             for i in range(5)
         ]
 
@@ -420,8 +420,9 @@ class TestDecisionConvergence:
         agents = []
         for i in range(5):
             agent_id = AgentID(
-                constellation_id="test-constellation",
+                constellation="astra-v3.0",
                 satellite_serial=f"sat-{i:03d}",
+                uuid=uuid5(NAMESPACE_DNS, f"astra-v3.0:sat-{i:03d}"),
             )
             agent_loop = SwarmDecisionLoop(
                 inner_loop=mock_inner_loop,
@@ -625,7 +626,7 @@ class TestConstellationHealth:
         from astraguard.swarm.models import HealthSummary
 
         peers = [
-            AgentID(constellation_id="test", satellite_serial=f"sat-{i:03d}")
+            AgentID(constellation="astra-v3.0", satellite_serial=f"sat-{i:03d}", uuid=uuid5(NAMESPACE_DNS, f"astra-v3.0:sat-{i:03d}"))
             for i in range(3)
         ]
 

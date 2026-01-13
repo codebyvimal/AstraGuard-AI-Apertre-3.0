@@ -762,8 +762,8 @@ def store_secret(key: str, value: str, **kwargs) -> SecretMetadata:
     """Store a secret using the global manager."""
     return get_secrets_manager().store_secret(key, value, **kwargs)
 
-def get_secret(key: str, default: Optional[str] = None, **kwargs) -> Optional[str]:
-    """Get a secret using the global manager. Returns default if secret not found."""
+def get_secret_v2(key: str, default: Optional[str] = None, **kwargs) -> Optional[str]:
+    """Get a secret using the global SecretsManager. Returns default if secret not found."""
     try:
         return get_secrets_manager().get_secret(key, **kwargs)
     except (KeyError, RuntimeError):

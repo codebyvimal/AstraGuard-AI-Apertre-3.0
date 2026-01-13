@@ -157,7 +157,8 @@ class AdaptiveMemoryStore:
         Raises:
             ValueError: If query_embedding is empty or top_k is invalid
         """
-        if not query_embedding:
+        # Handle numpy arrays - check None or empty explicitly
+        if query_embedding is None or (hasattr(query_embedding, 'size') and query_embedding.size == 0):
             raise ValueError("Query embedding cannot be empty")
         if top_k <= 0:
             raise ValueError("top_k must be positive")
