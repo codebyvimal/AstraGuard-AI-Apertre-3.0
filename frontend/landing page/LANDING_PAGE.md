@@ -312,7 +312,7 @@ interface MissionPhase {
 **Current Status:**
 - All changes pushed to origin/main ✅
 - Unblocks Issue #88 (Map + Anomalies) ✅
-- ECWoC26 Mission Control MVP progressing ✅
+- Apertre-3.0 Mission Control MVP progressing ✅
 
 ---
 

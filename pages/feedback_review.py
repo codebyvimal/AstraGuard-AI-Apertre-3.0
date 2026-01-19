@@ -212,7 +212,7 @@ def main() -> None:
 
     st.title("🛡️ AstraGuard AI - Feedback Learning Dashboard")
     st.markdown(
-        "**ECWoC26 Operator Feedback Loop** | Interactive review, live metrics, policy adaptation"
+        "**Apertre-3.0 Operator Feedback Loop** | Interactive review, live metrics, policy adaptation"
     )
 
     tab1, tab2 = st.tabs(["📋 Review Pending", "📊 Metrics & Trends"])

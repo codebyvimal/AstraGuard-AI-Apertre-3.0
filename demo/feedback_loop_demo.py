@@ -1,4 +1,4 @@
-"""ECWoC26 demo: 90-second showcase of complete feedback loop."""
+"""Apertre-3.0 demo: 90-second showcase of complete feedback loop."""
 import json
 import time
 from pathlib import Path
@@ -26,7 +26,7 @@ def print_section(phase: int, title: str, duration: int = 5) -> None:
 
 
 def demo_start() -> None:
-    """Begin ECWoC26 demo."""
+    """Begin Apertre-3.0 demo."""
     print_header("🛰️  ASTRAGUARD-AI OPERATOR FEEDBACK LOOP DEMO")
     print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"Status: Production learning loop validation")

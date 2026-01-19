@@ -1,4 +1,4 @@
-"""ECWoC26 feedback loop epic validation and benchmarking."""
+"""Apertre-3.0 feedback loop epic validation and benchmarking."""
 import pytest
 import json
 import random
@@ -293,4 +293,4 @@ class TestProductionReadiness:
             except ImportError as e:
                 pytest.skip(f"Module {module} not yet available: {e}")
         
-        print("✅ Complete ECWoC26 feedback loop available")
+        print("✅ Complete Apertre-3.0 feedback loop available")

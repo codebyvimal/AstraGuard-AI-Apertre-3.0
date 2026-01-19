@@ -5,9 +5,9 @@
   
   ### AI-Powered Satellite Security & Anomaly Detection System
   
-  **ECWoC '26 Featured Project**
+  **Apertre-3.0 Featured Project**
 
-  [![ECWoC '26](https://img.shields.io/badge/ECWoC-'26-blueviolet?style=for-the-badge)](https://code.elitecoders.xyz/profile/subhajitroy857+1)
+  [![Apertre-3.0](https://img.shields.io/badge/Apertre-3.0-blueviolet?style=for-the-badge)](https://code.elitecoders.xyz/profile/subhajitroy857+1)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Python](https://img.shields.io/badge/python-3.9+-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
   [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
@@ -74,7 +74,7 @@
   - [Mission-Phase Aware Fault Response](#-mission-phase-aware-fault-response)
   - [Error Handling & Resilience](#️-centralized-error-handling--graceful-degradation)
   - [REST API Integration](#-rest-api-for-external-integration)
-- [🎯 Project Goals (ECWoC '26)](#-project-goals-ecwoc-26)
+- [🎯 Project Goals (Apertre-3.0)](#-project-goals-ecwoc-26)
 - [🤝 Project Admin Commitment](#-project-admin-commitment)
 - [🧠 Mentorship & Support](#-mentorship--support)
 - [🛠️ Tech Stack](#️-tech-stack)
@@ -1548,7 +1548,7 @@ def cache_recovery(state):
 
 ---
 
-## 🎯 Project Goals (ECWoC '26)
+## 🎯 Project Goals (Apertre-3.0)
 
 As part of **Elite Coders Winter of Code 2026**, AstraGuard AI has clear deliverables and learning objectives:
 
@@ -1595,7 +1595,7 @@ As part of **Elite Coders Winter of Code 2026**, AstraGuard AI has clear deliver
 
 ### Learning Outcomes for Contributors
 
-By the end of ECWoC '26, contributors will have hands-on experience with:
+By the end of Apertre-3.0, contributors will have hands-on experience with:
 
 - **🛡️ Security**: Vulnerability assessment, payload generation, threat modeling
 - **🧠 AI/ML**: LLM integration, prompt engineering, embedding models
@@ -1608,7 +1608,7 @@ By the end of ECWoC '26, contributors will have hands-on experience with:
 
 ## 🤝 Project Admin Commitment
 
-As maintainers participating in **ECWoC '26**, we commit to creating a **welcoming, educational, and productive** environment for all contributors.
+As maintainers participating in **Apertre-3.0**, we commit to creating a **welcoming, educational, and productive** environment for all contributors.
 
 ### Our Commitments
 
@@ -1649,7 +1649,7 @@ As maintainers participating in **ECWoC '26**, we commit to creating a **welcomi
 - **Office Hours**: Fridays 6-7 PM IST
 - **Emergency Contact**: Via WhatsApp group (see Community section)
 
-📜 **ECWoC Code of Conduct**: https://elitecoders.xyz/coc
+📜 **Apertre-3.0 Code of Conduct**: https://elitecoders.xyz/coc
 
 ---
 

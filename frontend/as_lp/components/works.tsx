@@ -15,7 +15,7 @@ const projects = [
     description:
       "Full-stack autonomous fault detection & recovery system for CubeSats. Features security engine, memory engine, and real-time monitoring.",
     link: "https://github.com/sr-857/AstraGuard-AI",
-    event: "ECWoC '26",
+    event: "Apertre-3.0",
   },
   {
     title: "AstraGuard-SkyHack",

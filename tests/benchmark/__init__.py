@@ -1,1 +1,1 @@
-"""Benchmark test suite for ECWoC26 feedback loop validation."""
+"""Benchmark test suite for Apertre-3.0 feedback loop validation."""

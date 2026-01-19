@@ -1,4 +1,4 @@
-# Contributing to AstraGuard AI for ECWoC '26
+# Contributing to AstraGuard AI for Apertre-3.0
 
 Welcome to the AstraGuard AI project! We are thrilled to have you as part of Elite Coders Winter of Code '26.
 
@@ -72,21 +72,21 @@ Be respectful, constructive, and inclusive. We are all here to learn and build s
 
 Happy Coding! 🚀
 
-## ECWoC 2026 Contribution Guidelines
+## Apertre-3.0 2026 Contribution Guidelines
 
-For participants in the **Elite Coders Winter of Code (ECWoC) 2026** event:
+For participants in the **Elite Coders Winter of Code (Apertre-3.0) 2026** event:
 
-### PR Requirements for ECWoC Scoring
+### PR Requirements for Apertre-3.0 Scoring
 
-To ensure your contribution is eligible for ECWoC scoring, your pull request **MUST**:
+To ensure your contribution is eligible for Apertre-3.0 scoring, your pull request **MUST**:
 
-1. **Include the ECWoC26 Label**: All PRs must be labeled with `ECWoC26` for automatic tracking and scoring
+1. **Include the Apertre-3.0 Label**: All PRs must be labeled with `Apertre-3.0` for automatic tracking and scoring
 2. **Reference an Issue**: Link your PR to an existing issue (e.g., "Closes #20")
 3. **Clear Description**: Provide a detailed description of changes, motivation, and testing approach
 4. **Follow Code Standards**: Adhere to project style guides and maintain code quality
 5. **Pass All Checks**: Ensure CI/CD pipelines pass before submission
 
-### ECWoC Scoring Criteria
+### Apertre-3.0 Scoring Criteria
 
 - **Code Quality**: Well-written, tested, and maintainable code
 - **Documentation**: Clear commit messages and PR descriptions
@@ -96,7 +96,7 @@ To ensure your contribution is eligible for ECWoC scoring, your pull request **M
 
 ### Resources
 
-- [ECWoC Official Website](https://code.elitecoders.xyz/)
+- [Apertre-3.0 Official Website](https://code.elitecoders.xyz/)
 - [AstraGuard-AI Issues](https://github.com/sr-857/AstraGuard-AI/issues)
 - [Project Documentation](../docs/)
 
