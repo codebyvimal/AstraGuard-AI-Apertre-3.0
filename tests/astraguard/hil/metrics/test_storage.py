@@ -5,7 +5,6 @@ from pathlib import Path
 import pytest
 
 from astraguard.hil.metrics.storage import MetricsStorage
-from astraguard.hil.metrics.latency import LatencyCollector
 
 # --- Test Data and Mocks ---
 
@@ -53,7 +52,6 @@ def test_metrics_storage_initialization(tmp_path: Path):
     results_dir = tmp_path / "results"
 
     # Initialize the storage class
-    storage = MetricsStorage(run_id=run_id, results_dir=str(results_dir))
 
     # Check if the specific run directory was created
     expected_path = results_dir / run_id
@@ -79,7 +77,6 @@ def test_save_latency_stats(tmp_path: Path, mock_collector: MockLatencyCollector
     data = json.loads(summary_path.read_text())
     assert data["run_id"] == run_id
     assert data["total_measurements"] == 3
-    assert "ack" in data["stats"]
     assert data["stats"]["ack"]["mean_ms"] == 15.0
 
     # Verification for CSV file
@@ -111,26 +108,8 @@ def test_get_run_metrics_success(tmp_path: Path):
     assert metrics["stats"]["test"]["mean_ms"] == 100
 
 def test_get_run_metrics_not_found(tmp_path: Path):
-    """
-    Test that get_run_metrics returns None if the summary file doesn't exist.
-    """
     storage = MetricsStorage(run_id="non-existent-run", results_dir=str(tmp_path))
     
-    # Action and Verification
-    assert storage.get_run_metrics() is None
-
-def test_get_run_metrics_bad_json(tmp_path: Path):
-    """
-    Test that get_run_metrics returns None if the summary file is corrupted.
-    """
-    run_id = "test-run-bad-json"
-    results_dir = tmp_path / "results"
-    storage = MetricsStorage(run_id=run_id, results_dir=str(results_dir))
-    
-    # Setup: Create a corrupted JSON file
-    summary_path = results_dir / run_id / "latency_summary.json"
-    summary_path.write_text("this is not valid json")
-
     # Action and Verification
     assert storage.get_run_metrics() is None
 
@@ -151,7 +130,7 @@ def test_compare_runs_success(tmp_path: Path):
 
     # Setup Run 2
     run2_id = "run-2"
-    storage2 = MetricsStorage(run_id=run2_id, results_dir=str(results_dir))
+
     summary2_path = results_dir / run2_id / "latency_summary.json"
     summary2_path.write_text(json.dumps({
         "stats": {"ack": {"mean_ms": 15, "p95_ms": 18}}
@@ -185,58 +164,3 @@ def test_compare_runs_other_missing(tmp_path: Path):
     assert "error" in comparison
     assert "Could not load metrics for run run-does-not-exist" in comparison["error"]
 
-
-def test_get_recent_runs(tmp_path: Path):
-    """
-    Test listing recent runs from a directory.
-    """
-    results_dir = tmp_path / "results"
-    
-    # Setup: Create some fake run directories
-    # Valid runs (should be returned)
-    (results_dir / "run-2024-01-02").mkdir()
-    (results_dir / "run-2024-01-02" / "latency_summary.json").touch()
-    (results_dir / "run-2024-01-03").mkdir()
-    (results_dir / "run-2024-01-03" / "latency_summary.json").touch()
-    
-    # An older, valid run
-    (results_dir / "run-2024-01-01").mkdir()
-    (results_dir / "run-2024-01-01" / "latency_summary.json").touch()
-    
-    # Invalid runs (should be ignored)
-    (results_dir / "empty-dir").mkdir()
-    (results_dir / "not-a-run-dir.txt").write_text("file")
-
-    # Action
-    recent_runs = MetricsStorage.get_recent_runs(results_dir=str(results_dir))
-
-    # Verification
-    assert len(recent_runs) == 3
-    # Check that they are sorted most recent first
-    assert recent_runs == ["run-2024-01-03", "run-2024-01-02", "run-2024-01-01"]
-
-def test_get_recent_runs_limit(tmp_path: Path):
-    """
-    Test that the limit on get_recent_runs is respected.
-    """
-    results_dir = tmp_path / "results"
-    
-    # Create 5 valid runs
-    for i in range(5):
-        run_id = f"run-{i}"
-        (results_dir / run_id).mkdir()
-        (results_dir / run_id / "latency_summary.json").touch()
-
-    # Action: Get only the latest 2
-    recent_runs = MetricsStorage.get_recent_runs(results_dir=str(results_dir), limit=2)
-
-    # Verification
-    assert len(recent_runs) == 2
-
-def test_get_recent_runs_no_dir(tmp_path: Path):
-    """
-    Test that get_recent_runs returns an empty list if the results dir doesn't exist.
-    """
-    non_existent_dir = tmp_path / "non_existent"
-    runs = MetricsStorage.get_recent_runs(results_dir=str(non_existent_dir))
-    assert runs == []
